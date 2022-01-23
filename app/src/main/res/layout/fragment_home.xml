@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.HomeFragment"
+        android:background="@color/background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/gilroybold"
+                android:maxWidth="250dp"
+                android:text="Günay\n-dın"
+                android:textColor="@color/black"
+                android:textSize="48sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/searchRl"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/searchImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="55dp"
+                    android:background="@drawable/corner_textview"
+                    android:backgroundTint="@color/black_light_tone"
+                    android:fontFamily="@font/gilroylight"
+                    android:gravity="center|left"
+                    android:paddingLeft="10dp"
+                    android:text="Haber ara.."
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="RtlHardcoded,UnusedAttribute" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:scaleType="center"
+                    android:src="@drawable/svg_search" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/gilroylight"
+                android:maxWidth="250dp"
+                android:text="İşte senin için\nhazırladığımız kategoriler"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryRecy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/gilroybold"
+                android:maxWidth="250dp"
+                android:text="Tüm\ndünyadan"
+                android:textColor="@color/black"
+                android:textSize="48sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyEvery"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/gilroybold"
+                android:maxWidth="250dp"
+                android:text="Senin\niçin"
+                android:textColor="@color/black"
+                android:textSize="48sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
