@@ -20,10 +20,22 @@ class AllNewsAdapter: RecyclerView.Adapter<AllNewsAdapter.NewsViewHolder>(),IRow
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem.url == newItem.url
+            if(oldItem.content==newItem.content){
+                Log.d("winter","same")
+            }else{
+                Log.d("winter","not same")
+
+            }
+            return oldItem.content == newItem.content
         }
 
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            if(oldItem.content==newItem.content){
+                Log.d("winter","same")
+            }else{
+                Log.d("winter","not same")
+
+            }
             return oldItem == newItem
         }
     }

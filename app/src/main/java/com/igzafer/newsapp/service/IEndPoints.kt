@@ -18,6 +18,8 @@ interface IEndPoints {
         @Query("apiKey")
         apiKey: String = API_KEY
     ): Response<NewsModel>
+
+
     @GET("v2/everything")
     suspend fun getEverything(
         @Query("q")

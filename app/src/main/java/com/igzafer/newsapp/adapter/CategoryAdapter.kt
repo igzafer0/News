@@ -2,8 +2,10 @@ package com.igzafer.newsapp.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +14,11 @@ import com.igzafer.newsapp.databinding.CategoryRowBinding
 import com.igzafer.newsapp.databinding.EverynewsRowBinding
 import com.igzafer.newsapp.model.Article
 import com.igzafer.newsapp.model.CategoryModel
+import com.igzafer.newsapp.ui.HomeFragmentDirections
+import kotlinx.android.synthetic.main.category_row.view.*
+import kotlinx.android.synthetic.main.news_row.view.*
 
-class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(),IRowClickListener {
 
     private val differCallback = object : DiffUtil.ItemCallback<CategoryModel>() {
         override fun areItemsTheSame(oldItem: CategoryModel, newItem: CategoryModel): Boolean {
@@ -50,7 +55,13 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
         val category = differ.currentList[position]
         holder.view.category=category
         holder.view.categoryPhoto.clipToOutline=true
+        holder.view.listener=this
 
+    }
+
+    override fun rowTiklandi(view: View) {
+        val action = HomeFragmentDirections.actionHomeFragmentToCategoryFragment(view.idText.text.toString(),view.categoryTitle.text.toString())
+        Navigation.findNavController(view).navigate(action)
     }
 
 }

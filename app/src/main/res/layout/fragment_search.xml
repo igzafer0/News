@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/searchRl"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <EditText
+            android:id="@+id/searchEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/corner_image"
+            android:backgroundTint="@color/black_light_tone"
+            android:fontFamily="@font/gilroylight"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:hint="Haber ara.."
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:ignore="RtlHardcoded,UnusedAttribute" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:scaleType="center"
+            android:src="@drawable/svg_search" />
+    </RelativeLayout>
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recySearch"
+    android:layout_marginTop="10dp"
+    />
+</LinearLayout>

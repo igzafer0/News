@@ -9,6 +9,8 @@ import com.igzafer.newsapp.R
 import kotlinx.android.synthetic.main.fragment_read.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.news_row.view.*
 
 
 class ReadFragment : Fragment() {
@@ -35,6 +37,10 @@ class ReadFragment : Fragment() {
         webView.webViewClient = WebViewClient()
 
         webView.loadUrl(url)
-
+        backButton.setOnClickListener {
+            val action = ReadFragmentDirections.actionReadFragmentPop()
+            Navigation.findNavController(view).navigate(action)
+        }
     }
+
 }

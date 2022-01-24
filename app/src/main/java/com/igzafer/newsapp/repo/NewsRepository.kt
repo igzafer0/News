@@ -7,7 +7,7 @@ class NewsRepository {
     suspend fun getNews(countryCode: String) =
         RetrofitInstance.api.getBreakingNews(countryCode)
 
-    suspend fun getEverything() =
-        RetrofitInstance.api.getEverything()
+    suspend fun getEverything(q:String) =
+        RetrofitInstance.api.getEverything(q)
 
 }

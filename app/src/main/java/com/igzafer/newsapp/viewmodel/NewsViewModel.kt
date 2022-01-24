@@ -29,10 +29,12 @@ class NewsViewModel(
 
     val breakingNews: MutableLiveData<Resource<NewsModel>> = MutableLiveData()
     val allNews: MutableLiveData<Resource<NewsModel>> = MutableLiveData()
+    val allNewsByCategory: MutableLiveData<Resource<NewsModel>> = MutableLiveData()
     val category: MutableLiveData<List<CategoryModel>> = MutableLiveData()
 
     private var breakingNewsResponse: NewsModel? = null
     private var allNewsResponse: NewsModel? = null
+    private var allNewsByCategoryResponse: NewsModel? = null
 
     init {
         getBreakingNews()
@@ -69,7 +71,22 @@ class NewsViewModel(
         }
         return Resource.Error(response.message())
     }
+    private fun processAllNewsByCategory(response: Response<NewsModel>): Resource<NewsModel> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
 
+                if (allNewsByCategoryResponse == null) {
+                    allNewsByCategoryResponse = resultResponse
+                } else {
+                    val oldArticles = allNewsByCategoryResponse?.articles
+                    val newArticles = resultResponse.articles
+                    oldArticles?.addAll(newArticles)
+                }
+                return Resource.Success(allNewsByCategoryResponse ?: resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
     private fun processAllNewsResponse(response: Response<NewsModel>): Resource<NewsModel> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
@@ -105,17 +122,26 @@ class NewsViewModel(
             }
         }
     }
+    private suspend fun getNewsByCategory(q: String) {
+        allNewsByCategory.postValue(Resource.Loading())
+        try {
+            val response = newsRepository.getEverything(q)
+            allNewsByCategory.postValue(processAllNewsByCategory(response))
+        } catch (t: Throwable) {
+            Log.d("winter", t.message.toString())
+            when (t) {
+                is IOException -> allNewsByCategory.postValue(Resource.Error("Ağ Hatası"))
+                else -> allNewsByCategory.postValue(Resource.Error("Bilinmeyen Hata"))
+            }
+        }
+    }
 
     private suspend fun allNewsCall() {
-
         try {
-            val response = newsRepository.getEverything()
+            val response = newsRepository.getEverything("turkey")
             Log.d("winter", response.code().toString())
             Log.d("winter", "calisti")
-
             allNews.postValue(processAllNewsResponse(response))
-
-
         } catch (t: Throwable) {
             Log.d("winter", t.message.toString())
             when (t) {
@@ -126,14 +152,9 @@ class NewsViewModel(
     }
 
     private fun categoryCall() {
-
         try {
-
             val response = categoryRepository.prepareCategory()
-
             category.postValue(response)
-
-
         } catch (t: Throwable) {
             Log.d("winter", t.message.toString())
 

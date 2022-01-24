@@ -34,11 +34,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         searchRl.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
-            Navigation.findNavController(view).navigate(action)
+            try {
+                val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+                Navigation.findNavController(view).navigate(action)
+            }catch (e:Throwable){
+               Log.d("winter",e.message.toString())
+            }
+
         }
 
-        viewModel = (activity as MainActivity).viewModel
+        viewModel = (activity as MainActivity).newsViewModel
         setupRecyclerView()
         observers()
 
@@ -83,7 +88,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        newsAdapter = NewsAdapter()
+        newsAdapter = NewsAdapter("home")
         allNewsAdapter = AllNewsAdapter()
         categoryAdapter = CategoryAdapter()
         recy.apply {

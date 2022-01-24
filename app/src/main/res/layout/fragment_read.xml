@@ -11,5 +11,22 @@
             android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="geri dön"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/corner_textview"
+            android:fontFamily="@font/gilroylight"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/svg_left"
+            android:drawablePadding="10dp"
+            android:layout_margin="20dp"
+            android:paddingVertical="6dp"
+            android:paddingStart="5dp"
+            android:id="@+id/backButton"
+            android:backgroundTint="@color/black_light_tone"
+            />
     </RelativeLayout>
 </layout>

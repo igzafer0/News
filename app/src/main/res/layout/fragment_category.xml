@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.CategoryFragment">
+
+    <TextView
+        android:id="@+id/backButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/corner_textview"
+        android:backgroundTint="@color/black_light_tone"
+        android:drawableLeft="@drawable/svg_left"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/gilroylight"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:paddingStart="5dp"
+        android:text="geri dön"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/kategoriIsmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+
+        android:layout_marginBottom="10dp"
+
+        android:textColor="@color/black"
+
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/gilroybold"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:paddingStart="5dp"
+        android:text="Araba"
+        android:textSize="24sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>
